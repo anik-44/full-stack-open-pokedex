@@ -5,8 +5,8 @@ on:
     branches:
       - main
   pull_request:
-    branches: [ main ]
-    types: [ opened, synchronize ]
+    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
   simple_deployment_pipeline:
@@ -30,16 +30,16 @@ jobs:
 
   tag_release:
     runs-on: ubuntu-20.04
-    needs: [ simple_deployment_pipeline ]
+    needs: [simple_deployment_pipeline]
     steps:
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         if: ${{ github.event_name == 'push' }}
         with:
           DEFAULT_BUMP: patch # Options: major, minor, patch, or none
-          TAG_PREFIX: "v"     # Adds a "v" prefix to the version tag
+          TAG_PREFIX: 'v' # Adds a "v" prefix to the version tag
           RELEASE_BRANCHES: main # Only run on the main branch
           INITIAL_VERSION: 0.1.0 # Initial version if no tags exist
           DRY_RUN: true
