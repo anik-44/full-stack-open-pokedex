@@ -10,6 +10,10 @@ app.get('/health', (_req, res) => {
   res.send('ok');
 });
 
+app.get('/helloworld', (_req, res) => {
+  res.send('Hello world!!');
+});
+
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
