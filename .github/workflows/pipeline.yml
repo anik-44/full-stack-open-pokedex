@@ -39,7 +39,6 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         with:
           DEFAULT_BUMP: patch # Options: major, minor, patch, or none
-          TAG_PREFIX: 'v' # Adds a "v" prefix to the version tag
           RELEASE_BRANCHES: main # Only run on the main branch
           INITIAL_VERSION: 0.1.0 # Initial version if no tags exist
           DRY_RUN: true
